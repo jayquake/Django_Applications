@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+     {% block font %}
+{% endblock %}
+    <script>
+    function openTab(tabName) {
+  var i, x;
+  x = document.getElementsByClassName("containerTab");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  document.getElementById(tabName).style.display = "block";
+}
+</script>
+
+
+
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4 text-secondary">Teacher profile</legend>
+        </fieldset>
+
+<div class="container text-secondary " style="width: 52em;">
+<div class="content-section">
+    <div class="media">
+        <img class="rounded-circle account-img" src="{{ user.teacherprofile.image.url }}">
+        <div class="media-body">
+            <h2 class="account-heading text-dark">{{ user.username }}</h2>
+            <p class="text-secondary article-content">Name : {{ user.first_name }} {{ user.last_name }} </p>
+            <p class="text-secondary">Email : {{ user.email }}</p>
+            <p class="text-secondary">Region : {{ user.teacherprofile.region }}</p>
+            <p class="text-secondary article-content">About Me : {{ user.teacherprofile.about_me }}</p>
+            <p class="article-content" src="{{ user.resume }}" height="200" width="300">Resume: {{ user.teacherprofile.resume }} </p>
+           {% if not user.teacherprofile.resume %}
+           <p>Upload A Resume</p>
+            {% else %}
+               <embed src="/media/{{ user.teacherprofile.resume }}" width='600' height='500'>
+            <object data="{{ user.teacherprofile.resume }}" src="/media/{{ user.teacherprofile.resume }}" type=”pdf/html” width=”300″ height=”200″>
+
+<p><b>Example</b>: Please download the file to view it as this browser does not support PDFs: <a href=/media/{{ user.teacherprofile.resume }}>Download PDF</a>.</p>
+
+</object>
+
+           {% endif %}
+
+        </div>
+    </div>
+</div>
+
+    <div class="lead display-5 my-5"><div class="row">
+  <button class="column btn btn-outline-primary" onclick="openTab('b1');">Update Profile</button>
+    </div>
+
+        <div id="b1" class="containerTab" style="display:none;background:transparent">
+  <!-- If you want the ability to close the container, add a close button -->
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">x</span>
+   <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Update Profile</legend>
+ </fieldset>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+    <div class="container">
+        <fieldset class="form-group">
+            {{ u_form|crispy }}
+            {{ p_form|crispy }}
+        </fieldset>
+       </div>
+        <div class="container">
+            <button class="btn btn-outline-info" type="submit">Update</button>
+        </div>
+    </form>
+</div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <article class="media content-section">
+    <img class="rounded-circle article-img" src="{{ old_comment.post.author.profile.image.url }}">
+        <a class="mr-2" href="{% url 'user-posts' old_comment.post.author.username %}">Post From {{ old_comment.post.author }}</a>
+        <div class="media-body article-content">{{ old_comment.post.content }}</div>
+        <div class="article-metadata"></div>
+        <div class="comments" style="padding: 10px;"></div>
+    </article>
+
+<div class="content-section">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Edit Comment</legend>
+            <small class="text-muted">{{ old_comment.date_created|date:"F d, Y" }}</small>
+            <div class="comments" style="padding: 10px;">Original Comment : {{ old_comment.content }}</div>
+
+            {{ form|crispy }}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" href="{% url 'post-detail' old_comment.post.id %}" type="submit">Post</button>
+            <a class="btn btn-outline-secondary" href="{% url 'post-detail' old_comment.post.id %}">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

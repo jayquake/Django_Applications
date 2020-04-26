@@ -1,0 +1,53 @@
+ {% block font %}
+{% endblock %}
+
+
+  <div id="cover">
+  <div class="jumbotron jumbotron-fluid">
+        <video autoplay muted loop poster src="https://www.pexels.com/video/3129957/download/?search_query=spinning%20globe&tracking_id=2p0sf3xueds">
+    <source src="" data-src="https://i.vimeocdn.com/video/658066624.webp" type="video/webm">
+    <source src="" data-src="https://ak7.picdn.net/shutterstock/videos/1037924447/preview/stock-footage-asian-children-study-and-writing-the-classroom-at-school-together-concept-of-education.webm" type="video/ogg">
+</video>
+
+
+  <div class="container text-white">
+    <small class="text-muted">
+        <a href="{% url 'login' %}"> Already Have An Account? <br> Login </a>
+    </small>
+    <h1 class="display-4 text-center">Choose Your Registration type</h1>
+
+    <div class="lead display-5 my-5"><div class="row">
+  <button class="column btn btn-outline-dark" onclick="openTab('b1');" style="background:transparent; background-image: url('https://images.unsplash.com/photo-1569098272587-7af816a8293c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80');  background-size:cover; background-position: center;">Student</button>
+  <button class="column btn btn-outline-dark" onclick="openTab('b2');" style="background:transparent; background-image: url('https://images.unsplash.com/photo-1550309533-b1f8d1ff6112?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80');  background-size:cover; background-position: center;">Teacher</button>
+  <button class="column btn btn-outline-dark" onclick="openTab('b3');" style="background:transparent; background-image: url('https://images.unsplash.com/photo-1542718786-2e81a9d3dfac?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80');  background-size:cover; background-position: center;">Corporate</button>
+</div>
+
+<!-- The expanding grid (hidden by default) -->
+<div id="b1" class="containerTab" style="display:none;background:transparent">
+  <!-- If you want the ability to close the container, add a close button -->
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">x</span>
+  <h2>Student</h2>
+  <p>Lorem ipsum..<a href="{% url 'register_student' %}"><button class="btn btn-outline-dark">Register Now!</button></a></p>
+</div>
+
+<div id="b2" class="containerTab" style="display:none;background:transparent">
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">x</span>
+  <h2>Teacher</h2>
+  <p>Lorem ipsum..<a href="{% url 'register_teacher' %}"><button class="btn btn-outline-dark">Register Now!</button></a></p>
+</div>
+
+<div id="b3" class="containerTab" style="display:none;background:transparent">
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">x</span>
+  <h2>Corporate</h2>
+  <p>Lorem ipsum..</p>
+</div>
+
+</div>
+    <hr class="my-4">
+      <h6 class="title display-2 text-center" style="font-weight:100;"> <img src="" style="width:0px; height: 40vh;">   </h6>
+      <div class="lead string-1 text-center">Register with Google <a href="{% url 'register' %}"><button class="btn btn-outline-dark">Register Now!</button></a> </div>
+
+    </div>
+  </div>
+</div>
+

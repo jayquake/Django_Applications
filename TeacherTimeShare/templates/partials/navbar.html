@@ -1,0 +1,66 @@
+<nav class="navbar navbar-expand-lg navbar-transparent bg-transparent">
+    {% if request.user.is_teacher == True %}
+        <a href="{% url 'home' %}" class="navbar-brand"><strong>Abroadersense</strong> <small>Teacher</small></a>
+        {% elif request.user.is_student == True %}
+         <a href="{% url 'home' %}" class="navbar-brand"><strong>Abroadersense</strong> <small>Student</small></a>
+        {% else %}
+        <a href="{% url 'home' %}" class="navbar-brand"><strong>Abroadersense</strong></a>
+    {% endif %}
+
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav">
+                <a href="{% url 'home' %}" class="nav-item nav-link active">Home</a>
+                {% if request.user.is_authenticated %}
+                <a href="{% url 'index' %}" class="nav-item nav-link active">Chat</a>
+                {% endif %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown2" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Account
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                        <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
+                    </div>
+                </li>
+            </div>
+            {% if request.user.is_authenticated %}
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Forum
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'forum' %}">All Posts</a>
+          <a class="dropdown-item" href="{% url 'post-create' %}">Create Post</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{% url 'my-posts' %}">My Posts</a>
+        </div>
+      </li>
+            {% endif %}
+            <div class="navbar-nav ml-auto">
+                {% if request.user.is_authenticated %}
+                <a href="{% url 'profile' %}" class="nav-item nav-link">{{ user.get_username }}</a>
+                <a href="{% url 'logout' %}" class="nav-item nav-link">Logout</a>
+                {% else %}
+                <a href="{% url 'login' %}" class="nav-item nav-link">Login</a>
+                <a href="{% url 'register' %}" class="nav-item nav-link">Register</a>
+                {% endif %}
+                {% if request.user.is_superuser %}
+                <a href="{% url 'home' %}" class="nav-item nav-link">Admin Section</a>
+              {% endif %}
+            </div>
+  </div>
+
+</nav>
+{##}
+{# {% if request.user.is_teacher == True %}#}
+{#                        <a class="dropdown-item" href="{% url 'teacher_profile' %}">My Profile</a>#}
+{#                        {% elif request.user.is_student == True %}#}
+{#                        <a class="dropdown-item" href="{% url 'student_profile' %}">My Profile</a>#}
+{#                        {% endif %}#}
