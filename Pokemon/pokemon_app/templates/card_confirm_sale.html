@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="content-section">
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Sell Card</legend>
+            <h2>Are you sure you want to sell your card ?</h2>
+        </fieldset>
+</div>
+<div class="content-section">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Card Details for {{ card.name }}</legend>
+            {{ form|crispy }}
+        </fieldset>
+                <div class="form-group">
+            <button class="btn btn-outline-danger" type="submit">Yes, Sell</button>
+            <a class="btn btn-outline-secondary" href="{% url 'user_cards' %}">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

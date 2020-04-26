@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+ <fieldset class="form-group">
+     <legend class="border-bottom mb-4">Pokecards sale</legend>
+ </fieldset>
+{% for card_sale in cards %}
+     <h4 class="border-bottom mb-4 col-lg-3 m-2 col-sm-5">{{ card_sale.profile }}, Price: {{ card_sale.price }} Card ID: {{ card_sale.card_id }} </h4>
+<div class="pokemon-card-{{ card_sale.card.attribute }} pokemon-card-container card col-lg-3 m-2 col-sm-5">
+    <div class="pokemon-card">
+        <div class="background-{{ card_sale.card.attribute }} background">
+  <img src="{{ card_sale.card.image }}" class="card-img-top " alt="...">
+            <div class="content-{{ card_sale.card.attribute }} content">
+                <h1 class="pokemon-name">{{ card_sale.card.name }}</h1>
+                <span class="pokemon-type">{{ card_sale.card.attribute }}</span>
+                <div class="pokemon-stats">
+                    <p>Weight: {{ card_sale.card.weight }}</p>
+                    <p>Power: {{ card_sale.card.attack }}</p>
+                    <p>Attacks: {{ card_sale.card.move }}</p>
+                </div>
+                <div class="card-body">
+                    <a href="{% url 'card_confirm_buy' card_sale.card_id %}" class="btn btn-outline-dark">Buy</a>
+                    <h5 class="card-title"></h5>
+      <h1 class="pokemon-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1280px-International_Pok%C3%A9mon_logo.svg.png" style="width:100px;"> </h1>
+                    <p class="card-text"></p>
+                </div>
+</div>
+</div>
+</div>
+</div>
+{% endfor %}
+{% endblock content %}

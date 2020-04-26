@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+        {% include 'sidebar.html' %}
+        {% include 'card.html' %}
+        {% block title %}
+        <title>Pokemon</title>
+        {% endblock title %}
+    </head>
+        <body>
+            {% include 'navbar.html' %}
+            <main role="main" class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                     {% if messages %}
+                        {% for message in messages%}
+                             <div class="alert alert-{{ message.tags }}">
+                             {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                       </div>
+                    </div>
+              {% block content %}
+              {% endblock %}
+              <div id="mySidebar" class="sidebar">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <nav>
+                    <div class="col-md-4">
+                          <ul class="list-group">
+                            <li class="li-3" id="li-3"><a href="{% url 'home' %}"><span class="fas fa-home"></span>Home</a></li>
+                            <li class="li-2" id="li-2"><a href="{% url 'pokedex' %}"><span class="icon icon_pokeball"></span>Pokédex</a></li>
+                              {% if request.user.is_not_authenticated %}
+                              <li class="li-2" id="li-3"><a href="{% url 'register' %}"><span class="icon icon_pokeball"></span>Register</a></li>
+                              {% elif request.user.is_authenticated %}
+                            <li class="li-4" id="li-4"><a href="{% url 'user_cards' %}"><span class="icon icon_joystick"></span>My Cards</a></li>
+                              <li class="li-5" id="li-5"><a href="{% url 'user-posts' %}"><span class="icon icon_cards"></span>My Posts</a></li>
+                              <li class="li-7" id="li-8"><a href="{% url 'card-sale' %}"><span class="icon icon_cards"></span>Cards For Sale</a></li>
+                              <li class="li-6" id="li-6"><a href="{% url 'forum' %}"><span class="icon icon_cards"></span>Forum</a></li>
+                              <li class="li-7" id="li-7"><a href="{% url 'post-create' %}"><span class="icon icon_cards"></span>Post</a></li>
+                              {% endif %}
+                          </ul>
+                    </div>
+                    </nav>
+                </div>
+             </div>
+        </div>
+{% include 'sidebarjs.html' %}
+</main>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

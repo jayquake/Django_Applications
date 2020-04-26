@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6bae2f81-f074-4690-beb7-3edf02ee7fb7" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1ZANTY8GLdsX4RAzyTwIAiryQM1" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/pokemon_app/templates" />
+      <recent name="$PROJECT_DIR$/pokemon_app/templates/pokemon_app" />
+      <recent name="$PROJECT_DIR$/forum/templates/forum" />
+      <recent name="$PROJECT_DIR$/account_app/static" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/account_app/templates" />
+      <recent name="$PROJECT_DIR$/pokemon_app" />
+      <recent name="$PROJECT_DIR$/pokemon_app/templates" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/account_app" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.pokemon_app">
+    <configuration name="pokemon_app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Pokemon" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pokemon_app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="views" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Pokemon" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/account_app" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/account_app/views.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.pokemon_app" />
+        <item itemvalue="Python.views" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6bae2f81-f074-4690-beb7-3edf02ee7fb7" name="Default Changelist" comment="" />
+      <created>1584277946294</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1584277946294</updated>
+      <workItem from="1585149978937" duration="599000" />
+      <workItem from="1585208060621" duration="599000" />
+      <workItem from="1585292651338" duration="50000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="577" y="-2" width="424" height="513" key="FileChooserDialogImpl" timestamp="1584606428503">
+      <screen x="83" y="27" width="1417" height="972" />
+    </state>
+    <state x="577" y="-2" width="424" height="513" key="FileChooserDialogImpl/83.27.1417.972@83.27.1417.972" timestamp="1584606428503" />
+    <state width="1389" height="222" key="GridCell.Tab.0.bottom" timestamp="1584910331751">
+      <screen x="83" y="27" width="1417" height="972" />
+    </state>
+    <state width="1389" height="222" key="GridCell.Tab.0.bottom/83.27.1417.972@83.27.1417.972" timestamp="1584910331751" />
+    <state width="1389" height="222" key="GridCell.Tab.0.center" timestamp="1584910331750">
+      <screen x="83" y="27" width="1417" height="972" />
+    </state>
+    <state width="1389" height="222" key="GridCell.Tab.0.center/83.27.1417.972@83.27.1417.972" timestamp="1584910331750" />
+    <state width="1389" height="222" key="GridCell.Tab.0.left" timestamp="1584910331750">
+      <screen x="83" y="27" width="1417" height="972" />
+    </state>
+    <state width="1389" height="222" key="GridCell.Tab.0.left/83.27.1417.972@83.27.1417.972" timestamp="1584910331750" />
+    <state width="1389" height="222" key="GridCell.Tab.0.right" timestamp="1584910331751">
+      <screen x="83" y="27" width="1417" height="972" />
+    </state>
+    <state width="1389" height="222" key="GridCell.Tab.0.right/83.27.1417.972@83.27.1417.972" timestamp="1584910331751" />
+    <state x="283" y="112" width="1016" height="759" key="SettingsEditor" timestamp="1584949961247">
+      <screen x="83" y="27" width="1417" height="972" />
+    </state>
+    <state x="283" y="112" width="1016" height="759" key="SettingsEditor/83.27.1417.972@83.27.1417.972" timestamp="1584949961247" />
+    <state x="430" y="191" key="com.intellij.ide.util.TipDialog" timestamp="1585033769879">
+      <screen x="83" y="27" width="1417" height="972" />
+    </state>
+    <state x="430" y="191" key="com.intellij.ide.util.TipDialog/83.27.1417.972@83.27.1417.972" timestamp="1585033769879" />
+    <state x="333" y="45" width="913" height="835" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1584372672221">
+      <screen x="83" y="27" width="1417" height="972" />
+    </state>
+    <state x="333" y="45" width="913" height="835" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/83.27.1417.972@83.27.1417.972" timestamp="1584372672221" />
+    <state x="381" y="239" width="904" height="760" key="find.popup" timestamp="1584452579907">
+      <screen x="83" y="27" width="1417" height="972" />
+    </state>
+    <state x="381" y="239" width="904" height="760" key="find.popup/83.27.1417.972@83.27.1417.972" timestamp="1584452579907" />
+    <state x="454" y="217" width="672" height="679" key="search.everywhere.popup" timestamp="1584872597883">
+      <screen x="83" y="27" width="1417" height="972" />
+    </state>
+    <state x="454" y="217" width="672" height="679" key="search.everywhere.popup/83.27.1417.972@83.27.1417.972" timestamp="1584872597883" />
+  </component>
+</project>

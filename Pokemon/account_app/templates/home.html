@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Home Page</title>
+{% endblock title %}
+
+{% block content %}
+  <div id="cover">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h6 class="title display-3 text-center" style="font-weight:100;"> <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Pok%C3%A9mon_Trading_Card_Game_logo.svg" style="width:800px;">   </h6>
+      <div class="lead string-1 text-center">Changing the way the rest of the world looks at pokemon. </div>
+      <div class="lead string-1 text-center">Join the revolution today     <a href="{% url 'register' %}"><button class="btn btn-outline-primary">Register Now!</button></a> </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+    <!--    {% for post in posts %}-->
+<!--<article class="media content-section">-->
+<!--    <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">-->
+<!--  <div class="media-body">-->
+<!--    <div class="article-metadata">-->
+<!--      <a class="mr-2" href="#">{{ post.author }}</a>-->
+<!--      <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>-->
+<!--    </div>-->
+<!--        <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>-->
+<!--        <p class="article-content">{{ post.content }}</p>-->
+<!--  </div>-->
+<!--</article>-->
+<!--    {% endfor %}-->

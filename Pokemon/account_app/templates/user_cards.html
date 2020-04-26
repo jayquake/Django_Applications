@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+ <fieldset class="form-group">
+     <legend class="border-bottom mb-4">Your Points : {{ points }}</legend>
+ </fieldset>
+ <fieldset class="form-group">
+     <legend class=" border-bottom mb-4">Your Cards</legend>
+ </fieldset>
+<div class="row">
+{% for card in cards %}
+<div class="pokemon-card-{{ card.attribute }} pokemon-card-container card col-lg-3 m-2 col-sm-5">
+    <div class="pokemon-card">
+        <div class="background-{{ card.attribute }} background">
+  <img src="{{ card.image }}" class="card-img-top " alt="...">
+            <div class="content-{{ card.attribute }} content">
+                <h1 class="pokemon-name">{{ card.name }}</h1>
+                <span class="pokemon-type">{{ card.attribute }}</span>
+                <div class="pokemon-stats">
+                    <p>Weight: {{ card.weight }}</p>
+                    <p>Power: {{ card.attack }}</p>
+                    <p>Attacks: {{ card.move }}</p>
+                </div>
+                  <div class="card-body">
+    <h5 class="card-title"></h5>
+    <p class="card-text"></p>
+      <a href="{% url 'card_confirm_sale' card.id %}" class="btn btn-outline-dark">Sell Card</a>
+  </div>
+<h1 class="pokemon-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1280px-International_Pok%C3%A9mon_logo.svg.png" style="width:100px;"></h1>
+
+</div>
+</div>
+</div>
+</div>
+{% endfor %}
+    </div>
+{% endblock content %}

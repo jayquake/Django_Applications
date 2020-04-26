@@ -1,0 +1,249 @@
+<style>
+    #SIDEBAR#
+@import "https://fonts.googleapis.com/css?family=Passion+One:400, 700|Roboto:900";
+nav .li-1 {
+}
+nav .li-1:hover {
+  background-color: #919191;
+  transition: all ease .5s;
+}
+nav .li-1:hover a span {
+  color: white;
+}
+#li-1:target {
+  background-color: #919191;
+}
+#li-1:target a span {
+  color: white;
+}
+nav .li-1 a span {
+  color: #919191;
+}
+nav .li-2 {
+  border-bottom: 0.5rem solid #E3350D;
+}
+nav .li-2:hover {
+  background-color: #E3350D;
+  transition: all ease .5s;
+}
+nav .li-2:hover a span {
+  color: white;
+}
+#li-2:target {
+  background-color: #E3350D;
+}
+#li-2:target a span {
+  color: white;
+}
+nav .li-2 a span {
+  color: #E3350D;
+}
+nav .li-3 {
+  border-bottom: 0.5rem solid #ee6b2f;
+}
+nav .li-3:hover {
+  background-color: #ee6b2f;
+  transition: all ease .5s;
+}
+nav .li-3:hover a span {
+  color: white;
+}
+#li-3:target {
+  background-color: #ee6b2f;
+}
+#li-3:target a span {
+  color: white;
+}
+nav .li-3 a span {
+  color: #ee6b2f;
+}
+nav .li-4 {
+  border-bottom: 0.5rem solid #e6bc2f;
+}
+nav .li-4:hover {
+  background-color: #e6bc2f;
+  transition: all ease .5s;
+}
+nav .li-4:hover a span {
+  color: white;
+}
+#li-4:target {
+  background-color: #e6bc2f;
+}
+#li-4:target a span {
+  color: white;
+}
+nav .li-4 a span {
+  color: #e6bc2f;
+}
+nav .li-5 {
+  border-bottom: 0.5rem solid #30a7d7;
+}
+nav .li-5:hover {
+  background-color: #30a7d7;
+  transition: all ease .5s;
+}
+nav .li-5:hover a span {
+  color: white;
+}
+#li-5:target {
+  background-color: #30a7d7;
+}
+#li-5:target a span {
+  color: white;
+}
+nav .li-5 a span {
+  color: #30a7d7;
+}
+nav .li-6 {
+  border-bottom: 0.5rem solid #1b53ba;
+}
+nav .li-6:hover {
+  background-color: #1b53ba;
+  transition: all ease .5s;
+}
+nav .li-6:hover a span {
+  color: white;
+}
+#li-6:target {
+  background-color: #1b53ba;
+}
+#li-6:target a span {
+  color: white;
+}
+nav .li-6 a span {
+  color: #1b53ba;
+}
+nav .li-7 {
+  border-bottom: 0.5rem solid #4dad5b;
+}
+nav .li-7:hover {
+  background-color: #4dad5b;
+  transition: all ease .5s;
+}
+nav .li-7:hover a span {
+  color: white;
+}
+#li-7:target {
+  background-color: #4dad5b;
+}
+#li-7:target a span {
+  color: white;
+}
+nav .li-7 a span {
+  color: #4dad5b;
+}
+nav {
+  letter-spacing: .06em;
+  font-size: 1.2em;
+  display: flex;
+  padding: 0;
+  justify-content: center;
+  height: 70px;
+}
+nav ul {
+  width: 8em;
+  background-color: #313131;
+  list-style: none;
+  margin-left: 1250px;
+  display: flex;
+  padding: 0;
+  position:fixed;
+  justify-content: center;
+  border-radius: 0 0 12px 12px;
+}
+@media screen and (max-width: 620px) {
+  nav ul {
+    flex-wrap: wrap;
+  }
+}
+nav ul li {
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+}
+nav ul li:last-child {
+  border-radius: 0 0 12px 0;
+  border-right: none;
+}
+nav ul li:first-child {
+  border-radius: 0 0 0 12px;
+}
+nav ul li a {
+  text-decoration: none;
+  flex-wrap: wrap;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 2em;
+  color: #fff;
+}
+nav ul li a span {
+  width: 100%;
+  }
+/* The sidebar menu */
+.sidebar {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+}
+/* The sidebar links */
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+/* When you mouse over the navigation links, change their color */
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+/* Position and style the close button (top right corner) */
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+/* The button used to open the sidebar */
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+.openbtn:hover {
+  background-color: #444;
+}
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s; /* If you want a transition effect */
+  padding: 20px;
+}
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+<!--body{-->
+<!--    background-color: #313131;-->
+<!--}-->
+</style>
