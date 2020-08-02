@@ -1,38 +1,21 @@
 from django import forms
 from django.db import transaction
 from languages.fields import LanguageField, RegionField
-from .models import User, Subject, StudentProfile, TeacherProfile
+from .models import User, StudentProfile, TeacherProfile
 from django.contrib.auth.forms import UserCreationForm
 from . import models
 
 
 class StudentRegisterForm(UserCreationForm):
-    interests = forms.ModelMultipleChoiceField(
-        queryset=Subject.objects.all(),
-        widget=forms.CheckboxSelectMultiple,
-        required=False
-    )
-
     class Meta(UserCreationForm.Meta):
         model = User
 
-    @transaction.atomic
-    def save(self):
+    def save(self, commit=True):
         user = super().save(commit=False)
         user.is_student = True
-        user.save()
-        student = StudentProfile.objects.create(user=user)
-        student.interests.add(*self.cleaned_data.get('interests'))
+        if commit:
+            user.save()
         return user
-
-
-class StudentInterestsForm(forms.ModelForm):
-    class Meta:
-        model = StudentProfile
-        fields = ('interests', )
-        widgets = {
-            'interests': forms.CheckboxSelectMultiple
-        }
 
 
 class TeacherRegisterForm(UserCreationForm):
@@ -56,7 +39,7 @@ class StudentUpdateFrom(forms.ModelForm):
 class StudentProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = StudentProfile
-        fields = ['image']
+        fields = ['image', 'first_name','last_name']
 
 
 class TeacherUpdateFrom(forms.ModelForm):
@@ -75,11 +58,6 @@ class TeacherProfileUpdateForm(forms.ModelForm):
         resume = forms.FileInput
         job_title = forms.ChoiceField
         fields = ['image', 'about_me', 'region', 'resume']
-
-
-
-
-
 
 # class StudentRegisterForm(UserCreationForm):
 #     USER_SCHOOL_CHOICES = ((1, 'High School'),
@@ -135,12 +113,12 @@ class TeacherProfileUpdateForm(forms.ModelForm):
 #
 #
 #
-    #
-    # email = forms.EmailField()
-    # first_name = forms.CharField(max_length=50)
-    # last_name = forms.CharField(max_length=50)
-    # about_me = forms.Textarea(max_length=150)
-    # resume = forms.FileInput
-    # job_title = forms.ChoiceField
-    # languages = forms.LanguageField(max_length=8, blank=True)
-    # region = forms.RegionField(blank=True)
+#
+# email = forms.EmailField()
+# first_name = forms.CharField(max_length=50)
+# last_name = forms.CharField(max_length=50)
+# about_me = forms.Textarea(max_length=150)
+# resume = forms.FileInput
+# job_title = forms.ChoiceField
+# languages = forms.LanguageField(max_length=8, blank=True)
+# region = forms.RegionField(blank=True)

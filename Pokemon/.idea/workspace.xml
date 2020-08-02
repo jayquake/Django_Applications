@@ -1,7 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6bae2f81-f074-4690-beb7-3edf02ee7fb7" name="Default Changelist" comment="" />
+    <list default="true" id="6bae2f81-f074-4690-beb7-3edf02ee7fb7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../TeacherTimeShare/classroom/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TeacherTimeShare/classroom/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TeacherTimeShare/templates/classroom/classroom_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TeacherTimeShare/TeacherTimeShare/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../TeacherTimeShare/TeacherTimeShare/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TeacherTimeShare/TeacherTimeShare/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../TeacherTimeShare/TeacherTimeShare/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TeacherTimeShare/account_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../TeacherTimeShare/account_app/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TeacherTimeShare/chat/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../TeacherTimeShare/chat/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TeacherTimeShare/forum/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TeacherTimeShare/forum/migrations/0002_comment.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TeacherTimeShare/social_app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../TeacherTimeShare/classroom/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TeacherTimeShare/social_app/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/../TeacherTimeShare/classroom/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TeacherTimeShare/social_app/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/../TeacherTimeShare/classroom/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TeacherTimeShare/social_app/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../TeacherTimeShare/classroom/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TeacherTimeShare/social_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../TeacherTimeShare/classroom/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TeacherTimeShare/social_app/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/../TeacherTimeShare/classroom/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TeacherTimeShare/social_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../TeacherTimeShare/classroom/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TeacherTimeShare/templates/chat/css.html" beforeDir="false" afterPath="$PROJECT_DIR$/../TeacherTimeShare/templates/chat/css.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TeacherTimeShare/templates/chat/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../TeacherTimeShare/templates/chat/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TeacherTimeShare/templates/chat/room.html" beforeDir="false" afterPath="$PROJECT_DIR$/../TeacherTimeShare/templates/chat/room.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TeacherTimeShare/templates/forum/comment_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/../TeacherTimeShare/templates/forum/comment_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TeacherTimeShare/templates/forum/my_posts.html" beforeDir="false" afterPath="$PROJECT_DIR$/../TeacherTimeShare/templates/forum/my_posts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TeacherTimeShare/templates/partials/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/../TeacherTimeShare/templates/partials/navbar.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,14 +39,18 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1ZANTY8GLdsX4RAzyTwIAiryQM1" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -115,11 +143,13 @@
       <workItem from="1585149978937" duration="599000" />
       <workItem from="1585208060621" duration="599000" />
       <workItem from="1585292651338" duration="50000" />
+      <workItem from="1588208180293" duration="316000" />
+      <workItem from="1594934073011" duration="1549000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="577" y="-2" width="424" height="513" key="FileChooserDialogImpl" timestamp="1584606428503">

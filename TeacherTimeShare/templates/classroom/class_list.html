@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="btn-group btn-group-toggle m-auto " style="display: inline-block; justify-content: space-between; width: 100vw;">
+        <a href=" {% url 'create_class' %}" class="panel panel-heading ml-1  btn-outline-secondary lead text white mild   btn" style="width: 33%; border-radius: 0px; border-color: #818181;">Create Class</a>
+        <a href="{% url 'my_classes' %}" class="panel panel-heading  btn-outline-secondary lead text white mild   btn" style="width: 33%; border-radius: 0px; border-color: #818181;">My Classes</a>
+        <a href="{% url 'post-create' %}" class="panel panel-heading  btn-outline-secondary lead text white mild   btn" style="width: 33%; border-radius: 0px; border-color: #818181;">Create a Post</a>
+    </div>
+
+    <br>
+    <br>
+
+    {% for class in classes %}
+        <div class="row">
+            <div class="col-sm-6" style="margin: auto">
+
+                <div class="card text-center">
+                    <div class="card-header">
+                        <img class="rounded-circle article-img" src="{{ class.teacher.image.url }}">
+                        <div href="{% url 'classroom' class.id %}">
+                            <strong class="lead">{{ class.teacher }}</strong>
+                        </div>
+
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ class.class_name }}</h5>
+                        <p class="card-text">Class Description: {{ class.description }}.</p>
+                        <a href="{% url 'classroom' class.id %}" class="btn btn-primary">View Class</a>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <small class="text-muted">Students enrolled: {{ class.students.count }}</small>
+                    </div>
+                    <div class="card-footer text-muted ">
+                        <small class="text-muted">Date posted: {{ class.date_posted }}</small>
+                    </div>
+                </div>
+                <br>
+                <br>
+            </div>
+        </div>
+    {% endfor %}
+        {% if is_paginated %}
+
+            {% if page_obj.has_previous %}
+                <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+                <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+            {% endif %}
+
+            {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                    <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                    <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+                <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+            {% endif %}
+
+        {% endif %}
+{% endblock content %}

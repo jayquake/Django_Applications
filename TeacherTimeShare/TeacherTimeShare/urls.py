@@ -23,6 +23,7 @@ urlpatterns = [
     path('', include('account_app.urls')),
     path('chat/', include('chat.urls')),
     path('forum/', include('forum.urls')),
+    path('classroom/', include('classroom.urls')),
 ]
 
 if settings.DEBUG:

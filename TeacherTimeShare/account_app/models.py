@@ -14,18 +14,18 @@ class User(AbstractUser):
     is_corporate = BooleanField(default=False)
 
 
-class Subject(Model):
-    name = CharField(max_length=30)
-    color = CharField(max_length=7, default='#007bff')
-
-    def __str__(self):
-        return self.name
-
-    def get_html_badge(self):
-        name = escape(self.name)
-        color = escape(self.color)
-        html = '<span class="badge badge-primary" style="background-color: %s">%s</span>' % (color, name)
-        return mark_safe(html)
+# class Subject(Model):
+#     name = CharField(max_length=30)
+#     color = CharField(max_length=7, default='#007bff')
+#
+#     def __str__(self):
+#         return self.name
+#
+#     def get_html_badge(self):
+#         name = escape(self.name)
+#         color = escape(self.color)
+#         html = '<span class="badge badge-primary" style="background-color: %s">%s</span>' % (color, name)
+#         return mark_safe(html)
 
 
 class Profile(Model):
@@ -45,12 +45,15 @@ class Profile(Model):
 
 
 class StudentProfile(Model):
+    first_name = CharField(max_length=20, default='No First Name')
+    last_name = CharField(max_length=20, default='No Last Name')
     user = OneToOneField(User, on_delete=CASCADE, primary_key=True)
     image = ImageField(default='default.jpg', upload_to='profile_pics')
-    interests = ManyToManyField(Subject, related_name='interested_students')
+    interests = CharField(max_length=20, default='I dont have one')
+    email = EmailField
 
     def __str__(self):
-        return f'{self.user.username} Profile'
+        return f'{self.user.username}'
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -62,7 +65,8 @@ class StudentProfile(Model):
 
 
 class TeacherProfile(Model):
-    # firstname = TextField()
+    first_name = CharField(max_length=20, default='No First Name')
+    last_name = CharField(max_length=20, default='No Last Name')
     user = OneToOneField(User, on_delete=CASCADE, default=True)
     image = ImageField(default='default.jpg', upload_to='profile_pics')
     resume = FileField(upload_to='resumes')
@@ -70,9 +74,10 @@ class TeacherProfile(Model):
     job_title = CharField(max_length=15, name='Title')
     languages = LanguageField(max_length=8, blank=True)
     region = RegionField(blank=True)
+    email = EmailField
 
     def __str__(self):
-        return f'{self.user.username} Profile'
+        return f'{self.user.username}'
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)

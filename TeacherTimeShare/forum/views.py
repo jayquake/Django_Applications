@@ -22,6 +22,8 @@ def forum(request):
     return render(request, 'forum/forum.html', context)
 
 # POSTS
+
+
 class PostListView(ListView):
     model = Post
     template_name = 'forum/forum.html'

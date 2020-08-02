@@ -2,19 +2,78 @@
 
 {% block content %}
 
-  <h1>Chat</h1>
-  <video id="localVideo" autoplay playsinline></video>
-  <video id="remoteVideo" autoplay playsinline></video>
+    <style>
+/* The grid: Three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 50px;
+  text-align: center;
+  font-size: 25px;
+  cursor: pointer;
+  color: white;
+}
 
-  <div>
-    <button id="startButton"class="btn btn-dark">Start</button>
-    <button id="callButton"class="btn btn-dark">Call</button>
-    <button id="hangupButton" class="btn btn-dark">Hang Up</button>
-  </div>
+.containerTab {
+  padding: 20px;
+  color: white;
+}
 
-  <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Closable button inside the image */
+.closebtn {
+  float: right;
+  color: white;
+  font-size: 35px;
+  cursor: pointer;
+}
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+</style>
+
+<script>
+    function openTab(tabName) {
+  var i, x;
+  x = document.getElementsByClassName("containerTab");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  document.getElementById(tabName).style.display = "block";
+}
+</script>
+
+
+    <div class="container-fluid">`
+        <div class="lead secondary">Chat</div>
+
+        <div id="b1" class="containerTab" style="display:none;background:transparent">
+     <video id="remoteVideo" autoplay playsinline></video>
+        </div>
+    </div>
+
+        <div>
+            <video id="localVideo" class="local-video" autoplay playsinline></video>
+            <br>
+            <button id="startButton" class="btn btn-dark">Start</button>
+            <button id="callButton" onclick="openTab('b1')" class="btn btn-dark" >Call</button>
+            <button id="hangupButton" onclick="document.getElementById('remoteVideo').style.display='none'"  class="btn btn-dark">Hang Up</button>
+        </div>
+
+    </div>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
     {{ room_name|json_script:"room-name" }}
 
     {% include 'chat/js.html' %}
     {% include 'chat/css.html' %}
+
 {% endblock %}
+

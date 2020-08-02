@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'chat',
     'forum',
-    'social_app',
+    'classroom',
 
 
     # 'allauth',
