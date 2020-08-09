@@ -29,6 +29,7 @@
             <br>
             {% if class.teacher.user.id == request.user.id %}
                 <a class="btn btn-outline-primary btn-sm mt-1 mb-1" href="{% url 'class-update' class.id %}">Update</a>
+                <a class="btn btn-outline-danger btn-sm mt-1 mb-1" href="{% url 'class-delete' class.id %}">Delete</a>
 
 
             {% endif %}

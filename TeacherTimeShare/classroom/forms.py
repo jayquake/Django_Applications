@@ -2,6 +2,8 @@ from forum.models import Comment
 from .models import Classroom
 from account_app.models import StudentProfile
 from django.forms import *
+from django.forms import CheckboxSelectMultiple
+from multiselectfield import *
 
 
 class CreateClassForm(ModelForm):
@@ -17,10 +19,15 @@ Students = (StudentProfile.objects.all())
 
 class ClassUpdateForm(ModelForm):
     class Meta:
+        boost = {'class': 'form-control w-60'}
+        fields = ('class_name', 'subject', 'description', 'students')
         model = Classroom
-        students = SelectMultiple(choices=Students)
-        fields = ('class_name', 'subject', 'description', students)
-
+        widgets = {
+            'class_name': TextInput({'class': 'form-control w-60'}),
+            'subject': TextInput({'class': 'form-control w-60'}),
+            'description': TextInput({'class': 'form-control w-60'}),
+            'students': CheckboxSelectMultiple({'class': 'form-control ml-5 w-100 lead'}),
+        }
 
 # class StudentCommentForm(ModelForm):
 #     class Meta:

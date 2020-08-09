@@ -2,6 +2,9 @@ from django.utils import timezone
 from django.db.models import *
 from django.urls import reverse
 from account_app.models import TeacherProfile, StudentProfile
+from django.forms import CheckboxSelectMultiple
+from multiselectfield import *
+
 
 # Create your models here.
 
@@ -16,6 +19,9 @@ class Classroom(Model):
 
     def __str__(self):
         return self.class_name
+
+    def __list__(self):
+        return self.students
 
     def get_absolute_url(self):
         return reverse('classroom', kwargs={'pk': self.pk})

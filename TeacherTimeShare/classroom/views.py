@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView
 from .forms import CreateClassForm, ClassUpdateForm
+
 from .models import Classroom
 from account_app.models import StudentProfile
 
@@ -27,7 +28,6 @@ class ClassroomListView(ListView):
     context_object_name = 'classes'
     ordering = ['-date_posted']
     paginate_by = 3
-
 
 
 def classroom(request, pk):
@@ -55,7 +55,7 @@ def my_classes(request):
 
 class ClassroomUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Classroom
-    fields = ['class_name', 'subject', 'description', 'students' ]
+    form_class = ClassUpdateForm
 
     def form_valid(self, form):
         students = StudentProfile
@@ -70,15 +70,12 @@ class ClassroomUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return False
 
 
-
-
-
 class ClassroomDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Classroom
-    success_url = '/class-list/'
+    success_url = '/classroom/my_classes'
 
     def test_func(self):
-        classroom = self.get_object()
-        if self.request.user == classroom.teacher:
+        class_to_update = self.get_object()
+        if self.request.user.id == class_to_update.teacher.user.id:
             return True
         return False

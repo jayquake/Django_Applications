@@ -6,29 +6,25 @@
     <h1 class="lead display-3 text-secondary">What chat room would you like to enter?</h1><br>
     {% if request.user.is_teacher == True %}
         <fieldset class="form-group">
-            <legend class="lead display-4 text-secondary mb-4">Students</legend>
-
-        <div class="dropdown" style="position:relative;">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Select
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                {% for user in users %}
-            {% if user.is_student == True %}
-                <a class="dropdown-item lead" href="#">{{ user.username }}</a>
-            {% endif %}
-        {% endfor %}
-
+            <legend class="lead display-4 text-secondary mb-4">Class Name</legend>
+            <div class="dropdown" style="position:relative;">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Select
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    {% for class in classes %}
+                        {% if user.is_teacher == True %}
+                            <a id="room-name-input" class="dropdown-item lead" href="#">{{ class }}</a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
             </div>
-        </div>
 
-
-         </fieldset>
+            <button id="room-name-submit" type="button" value="Enter">
+        </fieldset>
     {% endif %}
 
-    <input id="room-name-input" type="text" size="100"><br>
-    <input id="room-name-submit" type="button" value="Enter">
 
     <script>
         document.querySelector('#room-name-input').focus();

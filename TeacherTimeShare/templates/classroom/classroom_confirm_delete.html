@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="content-section">
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Delete Class</legend>
+            <h2>Are you sure you want to delete your class ?</h2>
+        </fieldset>
+</div>
+<div class="content-section">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Class: {{ classroom.class_name }}</legend>
+            {{ form|crispy }}
+        </fieldset>
+                <div class="form-group">
+            <button class="btn btn-outline-danger" type="submit">Yes, Delete</button>
+            <a class="btn btn-outline-secondary" href="{% url 'classroom' classroom.pk %}">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

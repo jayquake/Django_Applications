@@ -2,12 +2,13 @@ from django.shortcuts import render
 
 # Create your views here.
 from account_app.models import User
+from classroom.models import Classroom
 
 
 def index(request):
-    context ={
-        'users': User.objects.all,
-
+    user = Classroom.objects.filter(teacher_id=request.user.teacherprofile.pk)
+    context = {
+        'classes': user.all()
     }
     return render(request, 'chat/index.html', context)
 
