@@ -6,6 +6,7 @@ from django.contrib.auth.models import AbstractUser
 from django.utils.html import escape, mark_safe
 from languages.fields import LanguageField, RegionField
 # Create your models here.
+import classroom
 
 
 class User(AbstractUser):

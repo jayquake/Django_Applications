@@ -1,76 +1,67 @@
 {% extends 'base.html' %}
-
 {% block content %}
-
-    <style>
-/* The grid: Three equal columns that floats next to each other */
-.column {
-  float: left;
-  width: 33.33%;
-  padding: 50px;
-  text-align: center;
-  font-size: 25px;
-  cursor: pointer;
-  color: white;
-}
-
-.containerTab {
-  padding: 20px;
-  color: white;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Closable button inside the image */
-.closebtn {
-  float: right;
-  color: white;
-  font-size: 35px;
-  cursor: pointer;
-}
-@media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-  }
-}
-</style>
-
-<script>
-    function openTab(tabName) {
-  var i, x;
-  x = document.getElementsByClassName("containerTab");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  document.getElementById(tabName).style.display = "block";
-}
-</script>
 
 
     <div class="container-fluid">`
-        <div class="lead secondary">Chat</div>
+           <fieldset class="form-group">
+            <legend class="border-bottom mb-4 lead secondary">{{ room_name }}</legend>
+        </fieldset>
+        <div class="lead secondary m-auto">Welcome to {{ user.first_name }}'s Classroom</div>
+        
+
 
         <div id="b1" class="containerTab" style="display:none;background:transparent">
-     <video id="remoteVideo" autoplay playsinline></video>
+            <video id="remoteVideo" autoplay playsinline></video>
         </div>
     </div>
 
-        <div>
-            <video id="localVideo" class="local-video" autoplay playsinline></video>
-            <br>
-            <button id="startButton" class="btn btn-dark">Start</button>
-            <button id="callButton" onclick="openTab('b1')" class="btn btn-dark" >Call</button>
-            <button id="hangupButton" onclick="document.getElementById('remoteVideo').style.display='none'"  class="btn btn-dark">Hang Up</button>
-        </div>
-
+    <div>
+        <video id="localVideo" class="local-video" autoplay playsinline></video>
+        <br>
+        <button id="startButton" class="btn btn-dark">Start</button>
+        <button id="callButton" onclick="openTab('b1')" class="btn btn-dark">Call</button>
+        <button id="hangupButton" onclick="document.getElementById('remoteVideo').style.display='none'"
+                class="btn btn-dark">Hang Up
+        </button>
     </div>
-    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-    {{ room_name|json_script:"room-name" }}
+    <div class="" style="margin-left:200px">
+        <div class="students_in_room">
+
+            <button class="fas fa-bars " onclick="w3_open()"><i class="fas fa-bars" style="width: 100px; "></i></button>
+
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="sidenav" id="mySidebar" style="float: right;">
+            <div class="">
+                <button class="dropdown-btn" onclick="w3_close()">Close &times;
+                </button>
+                {% for stu in class_student %}
+                    {% if stu.studentprofile_id == student.user_id %}
+                        <a href="#" class="">{{ stu }}</a>
+                    {% endif %}
+                {% endfor %}
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+        }
+    </script>
+
+
+
 
     {% include 'chat/js.html' %}
     {% include 'chat/css.html' %}

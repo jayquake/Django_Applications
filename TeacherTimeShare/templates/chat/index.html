@@ -2,40 +2,42 @@
 
 
 {% block content %}
-
+    {% if request.user.is_student == True %}
     <h1 class="lead display-3 text-secondary">What chat room would you like to enter?</h1><br>
+    {% endif %}
     {% if request.user.is_teacher == True %}
-        <fieldset class="form-group">
-            <legend class="lead display-4 text-secondary mb-4">Class Name</legend>
+                <legend class="lead display-4 text-secondary mb-4">Classroom: {{ classroom }}</legend>
+            </fieldset>
             <div class="dropdown" style="position:relative;">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Select
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    {% for class in classes %}
+                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    {% for classroom in classes %}
                         {% if user.is_teacher == True %}
-                            <a id="room-name-input" class="dropdown-item lead" href="#">{{ class }}</a>
+                            <a id="room-name-input" class="dropdown-item lead" href="{% url 'room' classroom %}">{{ classroom }}</a>
                         {% endif %}
                     {% endfor %}
+                <br>
+                <br>
                 </div>
             </div>
 
-            <button id="room-name-submit" type="button" value="Enter">
+            <button id="room-name-submit" value="{{ class }}"> Enter</button>
         </fieldset>
     {% endif %}
 
 
     <script>
         document.querySelector('#room-name-input').focus();
-        document.querySelector('#room-name-input').onkeyup = function (e) {
+        document.querySelector('#room-name-input').onk = function (e) {
             if (e.keyCode === 13) {  // enter, return
                 document.querySelector('#room-name-submit').click();
             }
         };
 
         document.querySelector('#room-name-submit').onclick = function (e) {
-            var roomName = document.querySelector('#room-name-input').value;
+            var roomName = document.querySelector('{{ class }}').value;
             window.location.pathname = '/chat/' + roomName + '/';
         };
     </script>
