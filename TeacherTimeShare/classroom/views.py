@@ -48,7 +48,7 @@ def classroom(request, pk):
 def my_classes(request):
     user = Classroom.objects.filter(teacher_id=request.user.teacherprofile.pk)
     context = {
-        'classes': user.all()
+        'classes': user.all(),
     }
     return render(request, 'classroom/my_classes.html', context)
 
@@ -79,3 +79,14 @@ class ClassroomDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user.id == class_to_update.teacher.user.id:
             return True
         return False
+
+
+def enroll(request, class_id):
+    user_id = StudentProfile.objects.filter(classroom__students__user_id=request.user.studentprofile.pk)
+    classroom = get_object_or_404(Classroom, pk=class_id)
+
+    context = {
+        'classroom' : classroom,
+    }
+
+    return render(request, 'classroom/classroom_enroll.html', context)

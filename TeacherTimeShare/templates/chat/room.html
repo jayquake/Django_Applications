@@ -1,20 +1,18 @@
 {% extends 'base.html' %}
+{% include 'partials/homefont.html' %}
+
 {% block content %}
-
-
+    {% include 'partials/homefont.html' %}
     <div class="container-fluid">`
-           <fieldset class="form-group">
-            <legend class="border-bottom mb-4 lead secondary">{{ room_name }}</legend>
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4 lead secondary">
+                <img class="rounded-circle article-img" src="{{ class_room_exact.teacher.image.url }}"> Welcome
+                to {{ class_room_exact.teacher.first_name }}'s Classroom : {{ class_room_exact.class_name }}</legend>
         </fieldset>
-        <div class="lead secondary m-auto">Welcome to {{ user.first_name }}'s Classroom</div>
-        
-
-
         <div id="b1" class="containerTab" style="display:none;background:transparent">
             <video id="remoteVideo" autoplay playsinline></video>
         </div>
     </div>
-
     <div>
         <video id="localVideo" class="local-video" autoplay playsinline></video>
         <br>
@@ -37,19 +35,12 @@
             <div class="">
                 <button class="dropdown-btn" onclick="w3_close()">Close &times;
                 </button>
-                {% for stu in class_student %}
-                    {% if stu.studentprofile_id == student.user_id %}
-                        <a href="#" class="">{{ stu }}</a>
-                    {% endif %}
+                {% for stud in class_room_exact.students.values %}
+                    <a href="#" class="">{{ stud.first_name }}</a>
                 {% endfor %}
-
-
             </div>
         </div>
     </div>
-
-
-
     <script>
         function w3_open() {
             document.getElementById("mySidebar").style.display = "block";
@@ -59,10 +50,6 @@
             document.getElementById("mySidebar").style.display = "none";
         }
     </script>
-
-
-
-
     {% include 'chat/js.html' %}
     {% include 'chat/css.html' %}
 

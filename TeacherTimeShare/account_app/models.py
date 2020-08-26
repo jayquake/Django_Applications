@@ -56,6 +56,9 @@ class StudentProfile(Model):
     def __str__(self):
         return f'{self.user.username}'
 
+    def __int__(self):
+        return f'{self.user.pk}'
+
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
         img = Image.open(self.image.path)

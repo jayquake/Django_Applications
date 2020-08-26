@@ -13,7 +13,45 @@
     </script>
 
 
-    <article class="media content-section w-50 m-auto pb-5 pt-5">
+    {% if request.user.is_teacher %}
+
+        <br>
+        <article class="media content-section w-50 m-auto pb-5 pt-5">
+            <br>
+            <img class="rounded-circle article-img" src="{{ class.teacher.image.url }}">
+            <br>
+            <div class="media-body">
+                <h1 class="lead text-muted">{{ class.teacher.user.first_name }}, {{ class.teacher.user.last_name }}</h1>
+                <div class="article-metadata">
+                    <a class="mr-2 lead text-muted"><small>Class Name: {{ class.class_name }}</small> </a><br>
+                    <small class="text-muted">Subject:{{ class.subject }}</small>
+                </div>
+                <small class="article-title">Description: {{ class.description }}</small>
+                <br>
+                <small class="article-content text-muted">Students enrolled:{{ my_students.count }}</small>
+
+                <br>
+                <a class="btn btn-primary btn-sm mt-1 mb-1" href="{% url 'room' class.id %}">Enter Class</a>
+                <br>
+                {% if request.user.is_student %}
+                    <a class="btn btn-outline-danger btn-sm mt-1 mb-1"
+                       href="{% url 'class-delete' class.id %}">Enroll</a>
+                {% endif %}
+                {% if class.teacher.user.id == request.user.id %}
+                    <a class="btn btn-outline-primary btn-sm mt-1 mb-1"
+                       href="{% url 'class-update' class.id %}">Update</a>
+                    <a class="btn btn-outline-danger btn-sm mt-1 mb-1"
+                       href="{% url 'class-delete' class.id %}">Delete</a>
+                {% endif %}
+            </div>
+        </article>
+
+    {% endif %}
+
+    {% if request.user.is_student %}
+
+        <br>
+        <article class="media content-section w-100 m-auto pb-5 pt-5">
         <br>
         <img class="rounded-circle article-img" src="{{ class.teacher.image.url }}">
         <br>
@@ -26,15 +64,16 @@
             <small class="article-title">Description: {{ class.description }}</small>
             <br>
             <small class="article-content text-muted">Students enrolled:{{ my_students.count }}</small>
-            <br>
-            {% if class.teacher.user.id == request.user.id %}
-                <a class="btn btn-outline-primary btn-sm mt-1 mb-1" href="{% url 'class-update' class.id %}">Update</a>
-                <a class="btn btn-outline-danger btn-sm mt-1 mb-1" href="{% url 'class-delete' class.id %}">Delete</a>
-
-
+{#            <br>#}
+{#            <a class="btn btn-primary btn-sm mt-1 mb-1" href="{% url 'room' class.id %}">Enter Class</a>#}
+{#            <br>#}
+            {% if request.user.is_student %}
+                <a class="btn btn-outline-success btn-sm mt-1 mb-1" href="{% url 'classroom_enroll' class.id %}">Enroll</a>
             {% endif %}
         </div>
-    </article>
+
+
+    {% endif %}
 
 
 {% endblock %}

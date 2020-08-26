@@ -15,7 +15,7 @@
                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     {% for classroom in classes %}
                         {% if user.is_teacher == True %}
-                            <a id="room-name-input" class="dropdown-item lead" href="{% url 'room' classroom %}">{{ classroom }}</a>
+                            <a id="room-name-input" class="dropdown-item lead" href="{% url 'room' classroom.id %}">{{ classroom }}</a>
                         {% endif %}
                     {% endfor %}
                 <br>

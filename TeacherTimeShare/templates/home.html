@@ -1,9 +1,101 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<title>Home Page</title>
+    <title>Home Page</title>
 {% endblock title %}
 
 {% block content %}
-       {% include 'partials/jumbostuff.html' %}
+    {% if request.user.is_authenticated ==  False %}
+        {% include 'partials/jumbostuff.html' %}
+    {% endif %}
+
+
+    {% if request.user.is_student == True %}
+        <style>
+            body, html {
+                height: 100%;
+            }
+
+            .parallax {
+                height: 45%;
+                background-attachment: fixed;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+
+            }
+        </style>
+        <div style="color: #777777;background-color: whitesmoke;text-align:center;padding:50px 30px;text-align: justify;">
+            <h3 style="text-align:center;">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">
+                        New Classes
+                    </font>
+                </font>
+            </h3>
+            <p><font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Parallax scrolling is a
+                    web site where the trend background content is moved at a different speed than the foreground
+                    content while scrolling.
+                </font>
+                <font style="vertical-align: inherit;">
+                    Shall not put through school, graduated ugly now but not free, but set free the soft ullamcorper
+                    graduated sit the kids, a big
+                    ugly homework sapien sit asset.
+                </font>
+                <font style="vertical-align: inherit;">Sometimes pull me with
+                    my sickness partners.
+                </font>
+                <font style="vertical-align: inherit;">Dui sauce recipe that diseases
+                    have a chat with the feet, no need to invest football life vehicles.
+                </font>
+                <font style="vertical-align: inherit;">
+                    Each one is smart television, but now players protein
+                    manufacturing, developers Mauris members notebook, protein volleyball, with a smile or hate. </font><font
+                    style="vertical-align: inherit;">
+                Though there have been the allies, vulputate accumsan fringilla
+                eleifend, nunc convallis sit amet, vehicula lorem real estate does not mean that, by reason of the
+                allies, and sometimes to adorn.
+            </font>
+                <font style="vertical-align: inherit;">Undertakes, therefore,
+                    a great to-morrow or the not to be the street of it is,
+                </font>
+            </font>
+            </p>
+        </div>
+
+        <div class="parallax">
+            {% for class in all_classes %}
+                <div class="pt-1" style="background-color: whitesmoke;">
+                    <div class="col-sm-4" style="margin: auto">
+                        <div class="card text-center">
+                            <div class="card-header">
+                                <img class="rounded-circle article-img" src="{{ class.teacher.image.url }}">
+                                <div href="{% url 'classroom' class.id %}">
+                                    <strong class="lead">{{ class.teacher }}</strong>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ class.class_name }}</h5>
+                                <a href="{% url 'classroom' class.id %}" class="btn btn-primary">View Class</a>
+                            </div>
+                            <div class="card-footer text-muted">
+                                <small class="text-muted">Students enrolled: {{ class.students.count }}</small>
+                            </div>
+                            <div class="card-footer text-muted ">
+                                <small class="text-muted">Date posted: {{ class.date_posted }}</small>
+                            </div>
+
+                        </div>
+
+                        <br>
+                    </div>
+                </div>
+                <div class="parallax"></div>
+            {% endfor %}
+        </div>
+
+
+    {% endif %}
+
 {% endblock content %}

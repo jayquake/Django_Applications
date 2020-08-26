@@ -3,12 +3,13 @@ from .models import User, TeacherProfile, StudentProfile
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
-from .forms import TeacherUpdateFrom, TeacherProfileUpdateForm, StudentUpdateFrom,StudentProfileUpdateForm
+from .forms import TeacherUpdateFrom, TeacherProfileUpdateForm, StudentUpdateFrom, StudentProfileUpdateForm
 from django.contrib.auth import login
 from django.shortcuts import redirect
 from django.views.generic import CreateView
 from .forms import StudentRegisterForm, TeacherRegisterForm
 from .models import User
+from classroom.models import Classroom
 
 
 class SignUpView(TemplateView):
@@ -16,7 +17,12 @@ class SignUpView(TemplateView):
 
 
 def home(request):
-    return render(request, 'home.html')
+    context = {
+        'all_classes': Classroom.objects.all()
+
+    }
+
+    return render(request, 'home.html', context)
 
 
 def register(request):
@@ -62,7 +68,8 @@ def profile(request):
             user_profile, created = TeacherProfile.objects.get_or_create(user=request.user)
         if request.method == "POST":
             teacher_update_form = TeacherUpdateFrom(request.POST, instance=request.user.teacherprofile)
-            teacher_profile_form = TeacherProfileUpdateForm(request.POST, request.FILES, instance=request.user.teacherprofile)
+            teacher_profile_form = TeacherProfileUpdateForm(request.POST, request.FILES,
+                                                            instance=request.user.teacherprofile)
             if teacher_update_form.is_valid() or teacher_profile_form.is_valid():
                 first = teacher_update_form.cleaned_data['first_name']
                 last = teacher_update_form.cleaned_data['last_name']
@@ -91,7 +98,8 @@ def profile(request):
             user_profile, created = StudentProfile.objects.get_or_create(user=request.user)
         if request.method == "POST":
             student_update_form = StudentUpdateFrom(request.POST, instance=request.user.studentprofile)
-            student_profile_form = StudentProfileUpdateForm(request.POST, request.FILES, instance=request.user.studentprofile)
+            student_profile_form = StudentProfileUpdateForm(request.POST, request.FILES,
+                                                            instance=request.user.studentprofile)
             if student_update_form.is_valid() or student_profile_form.is_valid():
                 student_update_form.save()
                 student_profile_form.save()
@@ -107,7 +115,3 @@ def profile(request):
         }
         return render(request, 'account_app/student_profile.html', context)
     return
-
-
-
-

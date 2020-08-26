@@ -30,11 +30,11 @@
             <p class="text-secondary">Email : {{ user.email }}</p>
             <p class="text-secondary">Region : {{ user.teacherprofile.region }}</p>
             <p class="text-secondary article-content">About Me : {{ user.teacherprofile.about_me }}</p>
-            <p class="article-content" src="{{ user.resume }}" height="200" width="300">Resume: {{ user.teacherprofile.resume }} </p>
+{#            <p class="article-content " src="{{ user.resume }}" height="100" width="200">Resume: {{ user.teacherprofile.resume }} </p>#}
            {% if not user.teacherprofile.resume %}
            <p>Upload A Resume</p>
             {% else %}
-               <embed src="/media/{{ user.teacherprofile.resume }}" width='600' height='500'>
+               <embed src="/media/{{ user.teacherprofile.resume }}" width='400' height='300'>
             <object data="{{ user.teacherprofile.resume }}" src="/media/{{ user.teacherprofile.resume }}" type=”pdf/html” width=”300″ height=”200″>
 
 <p><b>Example</b>: Please download the file to view it as this browser does not support PDFs: <a href=/media/{{ user.teacherprofile.resume }}>Download PDF</a>.</p>
