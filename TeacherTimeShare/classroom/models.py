@@ -3,7 +3,6 @@ from django.db.models import *
 from django.urls import reverse
 from account_app.models import TeacherProfile, StudentProfile
 from django.forms import CheckboxSelectMultiple
-from multiselectfield import *
 
 
 # Create your models here.

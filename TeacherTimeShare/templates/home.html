@@ -22,47 +22,19 @@
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: cover;
-
             }
         </style>
+
+        
+        {% if class not in all_classes %}
         <div style="color: #777777;background-color: whitesmoke;text-align:center;padding:50px 30px;text-align: justify;">
             <h3 style="text-align:center;">
                 <font style="vertical-align: inherit;">
                     <font style="vertical-align: inherit;">
-                        New Classes
+                        There are currently no classes available
                     </font>
                 </font>
-            </h3>
-            <p><font style="vertical-align: inherit;">
-                <font style="vertical-align: inherit;">Parallax scrolling is a
-                    web site where the trend background content is moved at a different speed than the foreground
-                    content while scrolling.
-                </font>
-                <font style="vertical-align: inherit;">
-                    Shall not put through school, graduated ugly now but not free, but set free the soft ullamcorper
-                    graduated sit the kids, a big
-                    ugly homework sapien sit asset.
-                </font>
-                <font style="vertical-align: inherit;">Sometimes pull me with
-                    my sickness partners.
-                </font>
-                <font style="vertical-align: inherit;">Dui sauce recipe that diseases
-                    have a chat with the feet, no need to invest football life vehicles.
-                </font>
-                <font style="vertical-align: inherit;">
-                    Each one is smart television, but now players protein
-                    manufacturing, developers Mauris members notebook, protein volleyball, with a smile or hate. </font><font
-                    style="vertical-align: inherit;">
-                Though there have been the allies, vulputate accumsan fringilla
-                eleifend, nunc convallis sit amet, vehicula lorem real estate does not mean that, by reason of the
-                allies, and sometimes to adorn.
-            </font>
-                <font style="vertical-align: inherit;">Undertakes, therefore,
-                    a great to-morrow or the not to be the street of it is,
-                </font>
-            </font>
-            </p>
-        </div>
+        {% endif %}
 
         <div class="parallax">
             {% for class in all_classes %}

@@ -3,7 +3,7 @@ from .models import Classroom
 from account_app.models import StudentProfile
 from django.forms import *
 from django.forms import CheckboxSelectMultiple
-from multiselectfield import *
+
 
 
 class CreateClassForm(ModelForm):
