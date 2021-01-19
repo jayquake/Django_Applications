@@ -7,6 +7,19 @@
     <fieldset class="form-group">
         <legend class="border-bottom mb-4">My Posts</legend>
     </fieldset>
+        {% if post not in posts %}
+        <div style="color: #777777;background-color: whitesmoke;text-align:center;padding:50px 30px;text-align: justify;">
+            <h3 style="text-align:center;">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">
+                        You haven't made any posts yet.<br>
+                        would you like to make one now?<br>
+                        <a class="btn btn-info mb-4" href="{% url 'post-create' %}">Create</a>
+
+                    </font>
+                </font>
+        {% endif %}
+
     {% for post in posts %}
         <div class="container " style="width: 40em;">
             <article class="media content-section">

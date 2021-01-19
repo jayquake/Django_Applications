@@ -34,7 +34,7 @@
            {% if not user.teacherprofile.resume %}
            <p>Upload A Resume</p>
             {% else %}
-               <embed src="/media/{{ user.teacherprofile.resume }}" width='400' height='300'>
+               <embed src="/media/{{ user.teacherprofile.resume }}" width=300' height='300'>
             <object data="{{ user.teacherprofile.resume }}" src="/media/{{ user.teacherprofile.resume }}" type=”pdf/html” width=”300″ height=”200″>
 
 <p><b>Example</b>: Please download the file to view it as this browser does not support PDFs: <a href=/media/{{ user.teacherprofile.resume }}>Download PDF</a>.</p>

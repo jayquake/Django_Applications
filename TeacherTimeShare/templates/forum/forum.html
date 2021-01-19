@@ -1,5 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
+
+    {% if post.count == 0  %}
+        <div style="color: #777777;background-color: whitesmoke;text-align:center;padding:50px 30px;text-align: justify;">
+            <h3 style="text-align:center;">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">
+                        There is currently no content available
+                    </font>
+                </font>
+        {% endif %}
+
     {% for post in posts %}
 <div class="container " style="width: 52em;">
         <article class="media content-section">

@@ -3,7 +3,7 @@
 
 {% block content %}
     {% if request.user.is_student == True %}
-    <h1 class="lead display-3 text-secondary">What chat room would you like to enter?</h1><br>
+    <h1 class="lead display-3 text-secondary">What class room would you like to enter?</h1><br>
     {% endif %}
     {% if request.user.is_teacher == True %}
                 <legend class="lead display-4 text-secondary mb-4">Classroom: {{ classroom }}</legend>

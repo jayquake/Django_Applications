@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
     <div class="btn-group btn-group-toggle m-auto " style="display: inline-block; justify-content: space-between; width: 100vw;">
-        <a href=" {% url 'create_class' %}" class="panel panel-heading ml-1  btn-outline-secondary lead text white mild   btn" style="width: 33%; border-radius: 0px; border-color: #818181;">Create Class</a>
+        <a href=" {% url 'create_class' %}" class="panel panel-heading ml-1  btn-outline-secondary lead text white mild btn"  style="width: 33%; border-radius: 0px; border-color: #818181;"
+        data-bs-toggle="tooltip" data-bs-placement="bottom" title="Create a Class ">Create Class</a>
         <a href="{% url 'my_classes' %}" class="panel panel-heading  btn-outline-secondary lead text white mild   btn" style="width: 33%; border-radius: 0px; border-color: #818181;">My Classes</a>
         <a href="{% url 'post-create' %}" class="panel panel-heading  btn-outline-secondary lead text white mild   btn" style="width: 33%; border-radius: 0px; border-color: #818181;">Create a Post</a>
     </div>

@@ -10,6 +10,7 @@ from django.views.generic import CreateView
 from .forms import StudentRegisterForm, TeacherRegisterForm
 from .models import User
 from classroom.models import Classroom
+from forum.models import Post
 
 
 class SignUpView(TemplateView):
@@ -18,7 +19,8 @@ class SignUpView(TemplateView):
 
 def home(request):
     context = {
-        'all_classes': Classroom.objects.all()
+        'all_classes': Classroom.objects.all(),
+        'all_posts': Post.objects.all()
 
     }
 
