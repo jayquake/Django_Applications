@@ -82,8 +82,8 @@
                 {% if request.user.is_teacher == True %}
                     <a href="{% url 'class_list' %}" class="nav-item nav-link active navfont"
                        style="color: white; font-size: 3em">My Classroom</a>
-                    <a href="{% url 'enter_class' %}" class="nav-item nav-link active navfont"
-                       style="color: white; font-size: 3em">Chat</a>
+{#                    <a href="{% url 'enter_class' %}" class="nav-item nav-link active navfont"#}
+{#                       style="color: white; font-size: 3em">Chat</a>#}
 
                 {% elif request.user.is_authenticated %}
                     {#                <a href="{% url 'enter_class' class.id %}" class="nav-item nav-link active">Chat</a>#}
