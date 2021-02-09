@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% load crispy_forms_tags %}
+    {% block font %}
+    {% endblock %}
+    <style>
+        .nav-font-style {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .nav-float {
+            float: right;
+        }
+    </style>
+    <script>
+        function openTab(tabName) {
+            var i, x;
+            x = document.getElementsByClassName("containerTab");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            document.getElementById(tabName).style.display = "block";
+        }
+
+        {
+
+
+    </script>
+
+
+
+    <fieldset class="form-group nav-font-style">
+        <legend class="border-bottom text-center text-secondary">{{ user.username }}' profile</legend>
+    </fieldset>
+
+    <div class="container text-secondary nav-font-style " style="width: 52em;">
+        <div class="content-section text-center">
+            <div class="media">
+                <img class="rounded-circle account-img" src="{{ user.downloaderprofile.image.url }}" height="300px"
+                     width="300px">
+                <div class="media-body">
+                    <h2 class="account-heading text-dark">{{ user.username }}</h2>
+                    <p class="text-secondary article-content">Name : {{ user.first_name }} {{ user.last_name }} </p>
+                    <p class="text-secondary">Email : {{ user.email }}</p>
+                    <p class="text-secondary article-content">About Me : {{ user.downloaderprofile.about_me }}</p>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="lead my-5">
+            <div class="row">
+                <button class="column btn btn-outline-dark" id="a" onclick="openTab('b1');">Update Profile</button>
+            </div>
+            <div id="b1 update-tab" onload="('').on('update-tab', function(e) {var href = $(this).attr('href');
+  $('html, body').animate({
+    scrollTop: $(href).offset().top
+  }, 'slow');
+});" class="containerTab" style="display:none;background:transparent">
+                <span onclick="this.parentElement.style.display='none'" class="closebtn">x</span>
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Update Profile</legend>
+                </fieldset>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="container">
+                        <fieldset class="form-group fs-4">
+                            {{ p_form|crispy }}
+                        </fieldset>
+                    </div>
+                    <br>
+                    <div class="container">
+                        <button class="btn btn-outline-success" type="submit">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

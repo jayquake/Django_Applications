@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-transparent text-dark bg-transparent nav-font-style">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+                aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <a class="navbar-brand text-muted nav-font-style" href="{% url 'photo_home_view' %}"><img
+                    src="https://www.flaticon.com/svg/vstatic/svg/1042/1042339.svg?token=exp=1611848756~hmac=40a8d9ec1a936766cf73c2ba7abe7176"><br>
+                <small>Shot of Life</small></a>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link text-dark nav-font-style fs-5" aria-current="page" href="#">Home</a>
+                </li>
+            </ul>
+
+            {% if request.user.is_authenticated %}
+
+                <div class="btn-group " style="margin-right: 2em;">
+                    <a type="submit" class="btn btn-outline-transparent float-right fs-5 ml-5 d-flex lead text-uppercase"
+                       href="{% url 'profile' %}">{{ request.user.username }}</a>
+                    <button type="button" class="btn btn-outline-transparent  dropdown-toggle dropdown-toggle-split"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="sr-only"></span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                        <a class="dropdown-item" href="{% url 'my-posts' %}">My Portfolio</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'logout' %}">Log out</a>
+                    </div>
+                </div>
+                </div>
+            {% else %}
+                <div class="nav-item ">
+                    <a class="btn btn-outline-dark float-right fs-5 mr-2 d-flex " type="submit"
+                       href="{% url 'registration_home' %}">Join</a>
+                </div>
+
+                <div class="nav-item ml-1">
+                    <a class="btn btn-outline-dark float-right fs-5 ml-1" type="submit"
+                       href="{% url 'login' %}">Login</a>
+                </div>
+            {% endif %}
+
+        </div>
+        {#            <form class="d-flex">#}
+        {#                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">#}
+        {#                <button class="btn btn-outline-dark" type="submit">Search</button>#}
+        {#            </form>#}
+    </div>
+    </div>
+
+
+</nav>

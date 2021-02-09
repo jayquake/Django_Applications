@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+<style>
+    .nav-font-style{
+    font-family: 'Playfair Display', serif;
+}
+    .icon-float{
+        float: c;
+        position: center;
+        margin: auto;
+    }
+</style>
+
+{% block content %}
+    {% load crispy_forms_tags %}
+    <div class="container container-md nav-font-style" style="width: 40vw; padding-top: 1%;">
+        <div class="content-section">
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group outline-success">
+                    <img class=" pt-2 " style="width: 8em; height: 8em; display: flex; margin: auto;" src="https://www.flaticon.com/svg/vstatic/svg/2910/2910922.svg?token=exp=1611868029~hmac=56a6149ed33be1fe8829e7e20cf69426">
+                    <legend class="border-bottom mb-4 text-center">Register</legend>
+                    {{ form|crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-primary w-75 m-auto d-flex justify-content-center" href="{% url 'login' %}" type="submit">Sign Up</button>
+                </div>
+            </form>
+            <div class="border-top pt-3">
+                <small class="text-muted"> Already Registered? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
+                </small>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <style>
+    .nav-font-style {
+        font-family: 'Playfair Display', serif;
+    }
+
+    .nav-float {
+        float: right;
+    }
+</style>
+
+    <div class="container container-md nav-font-style fs-3 text-center" style="width: 40vw; padding-top: 10%;">
+        <div class="content-section">
+            <fieldset class="form-group ">
+            <legend class="mb-4 fs-1 m-auto font-weight-light text-center">You have been logged out</legend>
+        </fieldset>
+            <div class="border-top pt-3">
+                <small class="text-muted">
+                    <a href="{% url 'login' %}">Log In Again</a>
+                </small>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

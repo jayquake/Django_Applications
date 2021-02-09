@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% block content %}
+    <style>
+        .nav-font-style {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .pg-placement {
+            padding: 5%;
+            background-color: #6fba82;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 80vh;
+
+        }
+
+        .register-card1 {
+            height: 55vh;
+            width: 30vw;
+            --borderWidth: 20px;
+            padding-top: 2%;
+            position: relative;
+            border-radius: var(--borderWidth);
+            transition: border-width 0.6s linear;
+        }
+
+        .register-card1:first-child {
+            margin-right: 20px;
+        }
+
+
+        .register-card1:hover{
+            background: transparent;
+            border-radius: calc(0.5 * var(--borderWidth));
+            animation: animatedgradient 3s ease alternate infinite;
+            border-width: 10px;
+
+        }
+
+        @keyframes animatedgradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .card-imgs {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 40%;
+        }
+
+        .card-txt {
+            font-size: 1.5vw;
+            font-weight: 0;
+        }
+
+
+    </style>
+
+    <div class=" nav-font-style ">
+        <div class=" text-center fs-1 pt-2">What are you here to do?</div>
+        <div class="box">
+            {#Contributor#}
+            <div class="card register-card1 ">
+                <img src="https://www.flaticon.com/svg/vstatic/svg/2917/2917641.svg?token=exp=1611863395~hmac=81fa26b13aca9e84a6827f8ea302f98f"
+                     class="card-img-top m-auto pt-1 card-imgs">
+                <div class="card-body">
+                    <p class="card-text text-center card-txt">I'm here to share my photos and videos with the world.</p>
+                    <br>
+                    <a href="{% url 'register_contributor' %}"
+                       class="btn btn-outline-success w-75 m-auto d-flex justify-content-center card-txt">
+                        I want to
+                        contribute</a>
+                </div>
+            </div>
+
+
+            {#Downloader#}
+            <div class="card register-card1 nav-font-style ">
+                <img
+                        src="https://www.flaticon.com/svg/vstatic/svg/2820/2820260.svg?token=exp=1611863520~hmac=f95368f21734a1ab8abdceb9eeaa7793"
+                        class="card-img-top m-auto pt-1 card-imgs">
+                <div class="card-body">
+                    <p class="card-text text-center card-txt">I'm here to download free photos and videos.</p>
+                    <br>
+                    <a href="{% url 'register_downloader' %}"
+                       class="btn btn-outline-success w-75 m-auto d-flex justify-content-center card-txt">I want to
+                        download</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
