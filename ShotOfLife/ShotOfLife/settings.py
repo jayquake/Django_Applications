@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'accounts',
     'crispy_forms',
     'picture_app',
+    'pyuploadcare.dj',
 ]
 
 MIDDLEWARE = [
@@ -110,6 +111,13 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
+UPLOADCARE = {
+    'pub_key': 'e6d396dc478b8844cb31',
+    'secret': 'b66200dc6dd28e827924',
+}
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/

@@ -8,60 +8,36 @@ from .forms import CommentForm, UpdateCommentForm, UploadForm
 
 
 def photo_home_view(request):
+    posts = PostImage.objects.all()
+    posts1 = PostImage.objects.all()
     context = {
+        'posts': posts,
+        'posts1': posts1,
     }
     return render(request, 'picture_app/photo_home_view.html', context)
 
 
-class UploadView(LoginRequiredMixin, CreateView):
-    model = PostImage
-
-    fields = ['title', 'image', 'photo_description']
-
-    def __init__(self, **kwargs):
-        super().__init__(kwargs)
-        self.image = None
-
-    def form_valid(self, form):
-        form.instance.image_author = self.request.user
-        return super().form_valid(form)
-
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        img_width = 300
-        img_height = 300
-        img = Image.open(self.image.path).resize((img_width, img_height))
-        output_size = (300, 300)
-        img.thumbnail(output_size)
-        img.save(self.image.path)
-
-
 def post_upload(request):
-    template_name = 'picture_app/postimage_form.html'
-    user_post = PostImage.objects.create(title=request.user.postimage_set.objects)
-    if request.method == 'GET':
-        user_post, created = PostImage.objects.get_or_create(image_author=request.user)
     if request.method == "POST":
-        contributor_post_form = UploadForm(request.POST, request.FILES, instance=request.user.contributorprofile)
+        contributor_post_form = UploadForm(request.POST)
         if contributor_post_form.is_valid():
-            title = contributor_post_form.cleaned_data['title']
-            photo_description = contributor_post_form.cleaned_data['photo_description']
-            image = contributor_post_form.cleaned_data['image']
-            image_author_id = request.user.pk
-            post_id = user_post.pk
-            post_commit = PostImage( title=title, image_author_id=image_author_id, post_id=post_id, image=image.url, photo_description=photo_description)
-            print(post_commit)
-            post_commit.save()
-            messages.success(request, f'Post Uploaded')
-            return redirect('.')
+            image_author = PostImage(image_author=request.user)
+            post = contributor_post_form.save(commit=False)
+            post.image_author = request.user
+            post.image_author.save()
+            post.save()
+            return redirect('photo_home_view')
     else:
-        form = UploadForm()
+        contributor_post_form = UploadForm()
 
-        context = {'post': user_post,
-                   'form': form
-                   }
+    try:
+        posts = PostImage.objects.all()
+    except PostImage.DoesNotExist:
+        posts = None
 
-    return render(request, template_name, context)
+    context = {'posts': posts, 'form': contributor_post_form, }
+
+    return render(request, 'picture_app/postimage_form.html', context)
 
 
 def post_detail(request, pk):
@@ -73,10 +49,10 @@ def post_detail(request, pk):
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
-            image_image_author_id = request.user.pk
+            comment_author_id = request.user.pk
             post_id = post.pk
             comment = form.cleaned_data.get('content')
-            comm = CommentOnPost(content=comment, image_image_author_id=image_image_author_id, post_id=post_id)
+            comm = CommentOnPost(content=comment, comment_author_id=comment_author_id, post_id=post_id)
             print(comm)
             comm.save()
             messages.success(request, f'Comment Posted')
@@ -110,7 +86,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = PostImage
-    success_url = 'my-posts'
+    success_url = '.'
 
     def test_func(self):
         post = self.get_object()
@@ -182,3 +158,26 @@ def comment_update_confirmation(request, post_id, pk):
                    'post_id': post_id,
                    }
         return render(request, 'picture_app/comment_form.html', context)
+
+
+class UploadView(LoginRequiredMixin, CreateView):
+    model = PostImage
+
+    fields = ['title', 'image', 'photo_description']
+
+    def __init__(self, **kwargs):
+        super().__init__(kwargs)
+        self.image = None
+
+    def form_valid(self, form):
+        form.instance.image_author = self.request.user
+        return super().form_valid(form)
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        img_width = 300
+        img_height = 300
+        img = Image.open(self.image.path).resize((img_width, img_height))
+        output_size = (300, 300)
+        img.thumbnail(output_size)
+        img.save(self.image.path)

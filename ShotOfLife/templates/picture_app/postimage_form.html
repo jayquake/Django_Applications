@@ -1,17 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
     {% load crispy_forms_tags %}
-
+    <head>
+        <title>Shot Of Life</title>
+        {{ form.media }}
+    </head>
     <div class="content-section nav-font-style ">
-    <form method="POST">
-        {% csrf_token %}
-        <fieldset class="form-group nav-font-style p-4">
-            <legend class="border-bottom mb-4"> Create A Post</legend>
-            {{ form|crispy }}
-        </fieldset>
-        <div class="form-group nav-font-style text-center">
-            <button class="btn btn-outline-dark w-50" type="submit">Post</button>
-        </div>
-    </form>
-</div>
+        <form method="POST">
+
+            {% csrf_token %}
+            <fieldset class="form-group nav-font-style p-4">
+                <legend class="border-bottom mb-4"> Create A Post</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group nav-font-style text-center">
+                <button class="btn btn-outline-dark w-50" type="submit">Post</button>
+            </div>
+        </form>
+    </div>
 {% endblock %}

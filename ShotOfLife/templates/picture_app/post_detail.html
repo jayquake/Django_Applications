@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% load crispy_forms_tags %}
+    <style>
+        .image_options {
+            margin: auto;
+            padding: 10px;
+
+        }
+    </style>
+    <script>
+        function openTab(tabName) {
+            var i, x;
+            x = document.getElementsByClassName("containerTab");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            document.getElementById(tabName).style.display = "block";
+        }
+    </script>
+    <div class="card nav-font-style image_options" style="width: 50vw;">
+        <img class="card-img-top img-fluid" src="{{ post.image }}-/crop/600x600/center/-/quality/lightest/ " alt="Card image cap">
+        <div class="card-body">
+            <div>
+                <img class="rounded-circle article-img"
+                      src="{{ post.image_author.contributorprofile.image.url }}"
+                      width="50px" height="50px"> {{ post.image_author }}
+                <small class="text-muted ">{{ post.date_posted|date:"F d, Y" }}
+                </small>
+            </div>
+
+            <h5 class="card-title text-center">{{ post.title }}</h5>
+            <p class="card-text text-center">{{ post.photo_description }}</p>
+        </div>
+    </div>
+
+
+    <article class="media content-section nav-font-style">
+
+        <div class="media-body">
+            <div class="article-metadata">
+                <div>{{ post.image_author.username }}</div>
+                {#                <a class="mr-2" href="{% url 'my-posts' post. %}">{{ post.author }}</a>#}
+
+            </div>
+            <p class="article-content">{{ post. }}</p>
+        </div>
+    </article>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <p>{% if post.author == user %}
+        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' post.id %}">Update</a>
+        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' post.id %}">Delete</a>
+    {% elif post.author != user %}
+        <form method="POST">
+            <div class="form-group">
+                {{ form | crispy }}
+                {% csrf_token %}
+                <button class="btn btn-outline-info" type="submit">Comment</button>
+            </div>
+        </form>
+    {% endif %}
+
+    </p>
+    </div>
+    </article>
+
+
+
+    {% for comment in comments %}
+        <article class="media content-section">
+            <img class="rounded-circle article-img"
+                 src="{{ comment.author.teacherprofile.image.url }} {{ post.author.studentprofile.image.url }}">
+            <a class="mr-2" href="{% url 'user-posts' comment.author.username %}">{{ comment.author }}</a>
+            <div class="media-body article-content">{{ comment.content }}</div>
+            <div class="article-metadata"></div>
+            <small class="text-muted">{{ comment.date_created|date:"F d, Y" }}</small>
+            <div class="comments" style="padding: 10px;"></div>
+            <p>{% if comment.author == user %}
+                <a class="btn btn-secondary btn-sm mt-1 mb-1"
+                   href="{% url 'comment-update' comment.id comment.post_id %}">Edit</a>
+                <a class="btn btn-danger btn-sm mt-1 mb-1"
+                   href="{% url 'comment-delete'  comment.id comment.post_id %}">Delete</a>
+
+
+            {% endif %}
+
+            <div class="lead display-6 my-2">
+                <div class="row">
+                    <button class="column btn btn-outline-primary" onclick="openTab('b1');">Reply</button>
+                </div>
+
+                <div id="b1" class="containerTab" style="display:none;background:transparent">
+                    <!-- If you want the ability to close the container, add a close button -->
+                    <span onclick="this.parentElement.style.display='none'" class="closebtn">x</span>
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">Reply</legend>
+                    </fieldset>
+
+                    <form method="POST">
+                        <div class="form-group">
+                            {{ form | crispy }}
+                            {% csrf_token %}
+                            <button class="btn btn-outline-info" type="submit">Reply</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </article>
+
+    {% endfor %}
+
+
+{% endblock %}

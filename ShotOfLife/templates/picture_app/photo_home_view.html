@@ -1,6 +1,116 @@
-{%  extends 'base.html' %}
+{% extends 'base.html' %}
 
-{%  block content %}
+{% block content %}
+    <style>
+        .popup {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
 
+        .popuptext {
+            visibility: hidden;
+            background-color: saddlebrown;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 0;
+            width: 40vw;
+            height: 40vh;
+            z-index: 1;
+            position: fixed;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+        }
+
+        /* Popup arrow */
+        .popup .popuptext::after {
+            content: "";
+            position: fixed;
+            border-width: 50px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+
+        /* Toggle this class when clicking on the popup container (hide and show the popup) */
+        .popup .show {
+            visibility: visible;
+            -webkit-animation: fadeIn 1s;
+            animation: fadeIn 1s
+        }
+
+        /* Add animation (fade in the popup) */
+        @-webkit-keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+
+
+        .popover-box {
+            height: 100vh;
+            width: 100vw;
+            background: #1098ad;
+        }
+
+    </style>
+
+
+    {{ posts.media }}
+
+    <div class="row container m-auto pt-2">
+        {% for post in posts %}
+
+            <script>
+
+                $('#myModal').on('shown.bs.modal', function () {
+                    $('#myInput').trigger('focus')
+                })
+            </script>
+
+            <!-- Button trigger modal -->
+
+            <img class=" img-thumbnail img-fluid col-md-3 popup image mr-1" data-toggle="modal"
+                 data-target="#exampleModalCenter{{ post.id }}"
+                 src="{{ post.image }}-/quality/lightest/ "
+                 alt="..." height="300px"
+                 width="230px">
+
+            <div class="modal fade nav-font-style popover-box " id="exampleModalCenter{{ post.id }}" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class=" text-center  " id="exampleModalCenterTitle">{{ post.title }} </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <img class=" img-fluid " src="{{ post.image }}-/quality/lightest/" alt="..." >
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
 
 {% endblock %}
+

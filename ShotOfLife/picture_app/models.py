@@ -2,7 +2,7 @@ from PIL import Image
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
-
+from pyuploadcare.dj.models import ImageField
 from accounts.models import User
 
 
@@ -11,19 +11,10 @@ from accounts.models import User
 
 class PostImage(models.Model):
     title = models.CharField(max_length=65)
-    image = models.ImageField(upload_to='user_uploads')
+    image = ImageField(blank=True, manual_crop='')
     photo_description = models.TextField()
     image_author = models.ForeignKey(User, on_delete=models.CASCADE)
     date_posted = models.DateTimeField(default=timezone.now)
-
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        img_width = 300
-        img_height = 300
-        img = Image.open(self.image.path).resize((img_width, img_height))
-        output_size = (300, 300)
-        img.thumbnail(output_size)
-        img.save(self.image.path)
 
     class Meta:
         ordering = ['-date_posted']
