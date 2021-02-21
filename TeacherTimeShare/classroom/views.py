@@ -82,11 +82,14 @@ class ClassroomDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 
 def enroll(request, class_id):
-    user_id = StudentProfile.objects.filter(classroom__students__user_id=request.user.studentprofile.pk)
-    classroom = get_object_or_404(Classroom, pk=class_id)
+    if request.method == 'GET':
+        student = StudentProfile.objects.filter(user_id=request.user.studentprofile.user_id)
+        classroom_exact = get_object_or_404(Classroom, id=class_id)
+        classroom_exact.students.set(student)
+        classroom_exact.save(True)
 
     context = {
-        'classroom' : classroom,
+        'classroom': classroom_exact,
     }
 
     return render(request, 'classroom/classroom_enroll.html', context)

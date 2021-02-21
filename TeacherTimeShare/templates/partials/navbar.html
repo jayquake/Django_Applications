@@ -61,6 +61,7 @@
                     <a href="{% url 'home' %}" class="nav-item nav-link active navfont"
                        style="color: white; font-size: 3em">Home</a>
                 {% endif %}
+            {% if request.user.is_authenticated  %}
                 <div class="nav-item dropdown nav-item">
                     <a class="nav-link dropdown-toggle navfont" style="color: white; font-size: 3em" href=""
                        id="navbarDropdown2" role="button"
@@ -78,6 +79,7 @@
                            href="{% url 'my-posts' %}">My Posts</a>
                     </div>
                 </div>
+            {% endif %}
 
                 {% if request.user.is_teacher == True %}
                     <a href="{% url 'class_list' %}" class="nav-item nav-link active navfont"

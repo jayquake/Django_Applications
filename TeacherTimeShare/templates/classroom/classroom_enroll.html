@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<div>
-    PITA
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="content-section">
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">You have been enrolled to Mr {{ classroom.teacher.last_name }}'s class</legend>
+        </fieldset>
 </div>
 
-</body>
-</html>
+            <a class="btn btn-outline-secondary m-auto" href="{% url 'classroom' classroom.id %}">Enter your class</a>
+
+{% endblock %}
